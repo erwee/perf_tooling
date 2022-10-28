@@ -88,7 +88,7 @@ def update_ycsb_summary_stats_csv(workload, task_execution, force_update=False):
 
     csv_table = {hdr: [] for hdr in SUMMARY_STATS_HEADERS}
     metrics_regex="(Operations|RunTime\\(ms\\)|Throughput\\(ops\\/sec\\)|(Average|Min|Max|95thPercentile|99thPercentile)Latency\\(us\\))"
-    regex=f"\\[(OVERALL|INSERT|READ|UPDATE)\\], {metrics_regex}, [0-9.]+"
+    regex=f"\\[(OVERALL|INSERT|READ|UPDATE)\\], {metrics_regex}, [-0-9E.]+"
 
     for dir in YCSB_DIRS:
         csv_row={hdr: None for hdr in SUMMARY_STATS_HEADERS}

@@ -11,7 +11,6 @@ patches:
     - "genny_qebench_qe_5enc_cf16"
     - "genny_qebench_qe_5enc_cf32"
     - "genny_qebench_qe_5enc_cfdefault"
-    - "genny_qebench_unencrypted"
     linux-shard-lite-qebench:
     - "genny_qebench_fle_1enc"
     - "genny_qebench_fle_5enc"
@@ -21,6 +20,10 @@ patches:
     - "genny_qebench_qe_5enc_cf16"
     - "genny_qebench_qe_5enc_cf32"
     - "genny_qebench_qe_5enc_cfdefault"
+  635b060832f4173a9e1e8e76:
+    linux-3-node-replSet-qebench:
+    - "genny_qebench_unencrypted"
+    linux-shard-lite-qebench:
     - "genny_qebench_unencrypted"
 
 genny_metrics:
