@@ -1,17 +1,16 @@
 # This workload file describes the evergreen patches and tasks that produced
-# reliable data for PERF-3190 - Genny testing of FLE & QE using mongocryptd
-workload_name: ycsblike_cryptd
+# reliable data for PERF-3194 - disk-based testing of QE with 60GB data.
+workload_name: ycsblike_60gb
 patches:
-  6340ca683e8e864788068304:
-    linux-3-node-replSet-qebench:
-    - "genny_qebench_fle_1enc"
-    - "genny_qebench_fle_5enc"
+  635fe75cd1fe0752e2e05ac1:
+    linux-3-node-replSet-qebench: &tasks
     - "genny_qebench_qe_1enc_cf16"
     - "genny_qebench_qe_1enc_cf32"
     - "genny_qebench_qe_1enc_cfdefault"
     - "genny_qebench_qe_5enc_cf16"
     - "genny_qebench_qe_5enc_cf32"
     - "genny_qebench_qe_5enc_cfdefault"
+    linux-shard-lite-qebench: *tasks
 genny_metrics:
   tests:
   - "YCSBLike.load.inserts"

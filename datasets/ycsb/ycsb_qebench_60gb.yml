@@ -1,5 +1,5 @@
 # This workload file describes the evergreen patches and tasks that produced
-# reliable data for PERF-3194 - disk-based YCSB testing of QE with 60GB data.
+# reliable data for PERF-3194 - disk-based testing of QE with 60GB data.
 workload_name: ycsb_qebench_60gb
 patches:
   634db8432fbabe4d60d6b89f:
