@@ -1,18 +1,13 @@
-workload_name: continuousrw_nocompact
+workload_name: continuousrw_nocompact_2kvalues
 patches:
-  634405351e2d171a12b2a0a8:
-    linux-shard-lite-qebench:
-    - "genny_qebench_continuousrw_nocompact"
-  63594d4161837d3b6708fdd5:
+  # Do not use the sharded tasks in this patch as they did not have the
+  # implicit ECOC create workaround.
+  63594ef1a4cf470f0052bbb4:
     linux-3-node-replSet-qebench:
     - "genny_qebench_continuousrw_nocompact"
-    - "genny_qebench_continuousrw_unencrypted"
-  # No update variant
-  63600c233627e07e72201b3b:
-    linux-3-node-replSet-qebench:
-    - "genny_qebench_continuousrw_nocompact_noupdate"
+  635985aad1fe07493271b66b:
     linux-shard-lite-qebench:
-    - "genny_qebench_continuousrw_nocompact_noupdate"
+    - "genny_qebench_continuousrw_nocompact"
 genny_metrics:
   tests:
   - "ContinuousRW.Crud"

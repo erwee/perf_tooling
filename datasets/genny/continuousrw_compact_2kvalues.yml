@@ -1,0 +1,55 @@
+workload_name: continuousrw_compact_2kvalues
+patches:
+  # This patch ran the continuous reads/writes tests with periodic compaction occuring at
+  # intervals of [128,256,512,1024] CRUD cycles per thread.
+  # Do not use the sharded tasks in this patch as they did not have the
+  # implicit ECOC create workaround.
+  63594ef1a4cf470f0052bbb4:
+    linux-3-node-replSet-qebench:
+    - "genny_qebench_continuousrw_compact_1024"
+    - "genny_qebench_continuousrw_compact_128"
+    - "genny_qebench_continuousrw_compact_256"
+    - "genny_qebench_continuousrw_compact_512"
+  # This runs the sharded variant of the compaction tests after patching the compaction
+  # coordinator to explicitly re-create the ECOC after renaming.
+  # The intervals are still [128,256,512,1024].
+  635985aad1fe07493271b66b:
+    linux-shard-lite-qebench:
+    - "genny_qebench_continuousrw_compact_1024"
+    - "genny_qebench_continuousrw_compact_128"
+    - "genny_qebench_continuousrw_compact_256"
+    - "genny_qebench_continuousrw_compact_512"
+
+genny_metrics:
+  tests:
+  - "ContinuousRW.Crud"
+  - "ContinuousRW.update"
+  - "ContinuousRW.insert"
+  - "ContinuousRW.find"
+  - "ContinuousRWCompactInProgress.Crud"
+  - "ContinuousRWCompactInProgress.update"
+  - "ContinuousRWCompactInProgress.find"
+  - "Compactor.compact"
+  metrics:
+  - "OperationsTotal"
+  - "DocumentsTotal"
+  - "SizeTotal"
+  - "DurationTotal"
+  - "OverheadTotal"
+  - "ErrorsTotal"
+  - "AverageLatency"
+  - "AverageSize"
+  - "OperationThroughput"
+  - "DocumentThroughput"
+  - "SizeThroughput"
+  - "LatencyMin"
+  - "LatencyMax"
+  - "Latency50thPercentile"
+  - "Latency80thPercentile"
+  - "Latency90thPercentile"
+  - "Latency95thPercentile"
+  - "Latency99thPercentile"
+  - "WorkersMin"
+  - "WorkersMax"
+  - "ErrorRate"
+curator: "/home/ubuntu/erwee/genny/build/curator/curator"
