@@ -1,0 +1,36 @@
+workload_name: exponential_compact_short
+patches:
+  63739bdd9ccd4e32ba96d88d:
+    linux-1-node-replSet-fle:
+    - "exponential_compact"
+    linux-shard-lite-fle:
+    - "exponential_compact_sharded"
+genny_metrics:
+  tests:
+  - "ContinuousWrites.insert"
+  - "ContinuousWrites.update"
+  - "ContinuousWrites.Crud"
+  - "Compactor.compact"
+  metrics:
+  - "OperationsTotal"
+  - "DocumentsTotal"
+  - "SizeTotal"
+  - "DurationTotal"
+  - "OverheadTotal"
+  - "ErrorsTotal"
+  - "AverageLatency"
+  - "AverageSize"
+  - "OperationThroughput"
+  - "DocumentThroughput"
+  - "SizeThroughput"
+  - "LatencyMin"
+  - "LatencyMax"
+  - "Latency50thPercentile"
+  - "Latency80thPercentile"
+  - "Latency90thPercentile"
+  - "Latency95thPercentile"
+  - "Latency99thPercentile"
+  - "WorkersMin"
+  - "WorkersMax"
+  - "ErrorRate"
+curator: "/home/ubuntu/erwee/genny/build/curator/curator"

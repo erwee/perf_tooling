@@ -1,24 +1,20 @@
-# This workload file describes the evergreen patches and tasks that produced
-# reliable data for PERF-3189 - Genny testing of unencrypted vs FLE vs QE
 workload_name: ycsblike_short
 patches:
-  # This patch excludes the sharded test results because sharding was not
-  # actually enabled.
-  636d40c25623432c2407e2a0:
-    linux-1-node-replSet-qebench:
-    - "genny_qebench_qe_1enc_cf16"
-    - "genny_qebench_qe_1enc_cf32"
-    - "genny_qebench_qe_1enc_cfdefault"
-    - "genny_qebench_qe_5enc_cf16"
-    - "genny_qebench_qe_5enc_cf32"
-    - "genny_qebench_qe_5enc_cfdefault"
-    # linux-shard-lite-qebench:
-    # - "genny_qebench_qe_1enc_cf16"
-    # - "genny_qebench_qe_1enc_cf32"
-    # - "genny_qebench_qe_1enc_cfdefault"
-    # - "genny_qebench_qe_5enc_cf16"
-    # - "genny_qebench_qe_5enc_cf32"
-    # - "genny_qebench_qe_5enc_cfdefault"
+  63739bdd9ccd4e32ba96d88d:
+    linux-1-node-replSet-fle:
+    - "ycsb_like_queryable_encrypt1_cf16"
+    - "ycsb_like_queryable_encrypt1_cf32"
+    - "ycsb_like_queryable_encrypt1_cfdefault"
+    - "ycsb_like_queryable_encrypt5_cf16"
+    - "ycsb_like_queryable_encrypt5_cf32"
+    - "ycsb_like_queryable_encrypt5_cfdefault"
+    linux-shard-lite-fle:
+    - "ycsb_like_queryable_encrypt1_cf16_sharded"
+    - "ycsb_like_queryable_encrypt1_cf32_sharded"
+    - "ycsb_like_queryable_encrypt1_cfdefault_sharded"
+    - "ycsb_like_queryable_encrypt5_cf16_sharded"
+    - "ycsb_like_queryable_encrypt5_cf32_sharded"
+    - "ycsb_like_queryable_encrypt5_cfdefault_sharded"
 genny_metrics:
   tests:
   - "YCSBLike.load.inserts"
